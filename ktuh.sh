@@ -2,19 +2,20 @@
 
 if [ $# -lt 5 ]
 then
-    echo "USAGE: $0 <Suffix=m4a|mp3|???> <OutDir> <Hours> <Minutes> <Seconds>"
+    echo "USAGE: $0 <Suffix=m4a|mp3|???> <Prefix> <Hours> <Minutes> <Seconds>"
     exit -1
 fi
 
 Suffix=$1
-OutDir=$2
+Prefix=$2
 hh=$3
 mm=$4
 ss=$5
 
 dt=$(date +"%Y-%m-%d_%H-%M-%S")
-OutBase=${OutDir}/ktuh_${dt}
+OutBase=${Prefix}_${dt}
 OutName=${OutBase}.${Suffix}
+OutDir=$(dirname ${OutName})
 
 Flags=""
 if [ "${Suffix}" == "m4a" ]; then
