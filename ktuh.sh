@@ -30,5 +30,5 @@ TimeInSeconds=$((${ss} + 60*(${mm} + 60*${hh})))
 #exit
 
 mkdir -p ${OutDir}
-date > ${OutBase}.start.txt
-ffmpeg -t ${TimeInSeconds} -i https://stream.ktuh.org:8001/stream ${Flags} ${OutName} 1> /dev/null 2>&1 &
+date > ${OutBase}.time.txt
+ffmpeg -t ${TimeInSeconds} -i https://stream.ktuh.org:8001/stream ${Flags} ${OutName} 1> ${OutBase}.out.txt 2> ${OutBase}.err.txt &
